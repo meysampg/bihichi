@@ -10,10 +10,11 @@ Bihichi only can be cloned or downloaded from the [release page](https://github.
 
 ## Todo
 Everything can be implemented! :penguin: I'm highly intersted to learn more and more with implementing concepts :mortar_board:. This list is just what I want to implement them, if you think there are something more, please make the and send a [pull request](https://github.com/meysampg/bihichi/compare) :tada:.
- [ ] Implement controller layer
- [ ] Implement a ORM (ActiveRecord pattern prefred)
- [ ] Implement a template engine
- [ ] Implement messaging layer
+
+ - [ ] Implement controller layer
+ - [ ] Implement a ORM (ActiveRecord pattern prefred)
+ - [ ] Implement a template engine
+ - [ ] Implement messaging layer
 
 ## Contribution Guide
 There is no guide, feel free to start learning and teach other :metal:. Just it can be a good idea if comments be more that codes :nail_care:.
