@@ -2,8 +2,11 @@
 
 namespace Components\Containers;
 
+use Components\Exceptions\ClassNotFoundException;
 use Components\Exceptions\ParameterMissingException;
 use ReflectionClass;
+
+use function class_exists;
 
 /**
  * Class Container acts as an IoC container
@@ -25,11 +28,15 @@ class Container extends Singleton
      * @param bool   $mustBeSingleton
      *
      * @return object
+     * @throws ClassNotFoundException
      * @throws ParameterMissingException
      * @throws \ReflectionException
      */
-    public function make(string $name, array $params = [], bool $mustBeSingleton = false)
-    {
+    public function make(
+         string $name,
+         array $params = [],
+         bool $mustBeSingleton = false
+    ) {
         if ($mustBeSingleton) {
             return $this->makeSingleton($name, $params);
         }
@@ -44,13 +51,15 @@ class Container extends Singleton
      * @param array  $param
      *
      * @return object
+     * @throws ClassNotFoundException
      * @throws ParameterMissingException
      * @throws \ReflectionException
      */
     public function makeObject(string $name, array $param = []): object
     {
-        $ref  = new ReflectionClass($name);
-        $cons = $ref->getConstructor();
+        $ref   = new ReflectionClass($name);
+        $cons  = $ref->getConstructor();
+        $place = "$name::__constructor";
 
         if ($cons === null || 0 == $cons->getNumberOfParameters()) {
             return new $name;
@@ -62,13 +71,22 @@ class Container extends Singleton
             $type = $parameter->getType();
 
             if ($type !== null && !$type->isBuiltin()) {
-                $params[$parameter->getName()] = $this->makeObject($type->getName(), $param);
+                if (class_exists($type->getName())) {
+                    $params[$parameter->getName()] = $this->makeObject($type->getName(), $param);
+                } else {
+                    if (!$parameter->isOptional()) {
+                        throw new ClassNotFoundException($type->getName());
+                    }
+                }
             } else {
                 if (array_key_exists($parameter->getName(), $param)) {
                     $params[$parameter->getName()] = $param[$parameter->getName()];
                 } else {
                     if (!$parameter->isOptional()) {
-                        throw new ParameterMissingException($name, $parameter->getName());
+                        throw new ParameterMissingException(
+                             $place,
+                             $parameter->getName()
+                        );
                     }
                 }
             }
@@ -84,6 +102,7 @@ class Container extends Singleton
      * @param array  $params
      *
      * @return object
+     * @throws ClassNotFoundException
      * @throws ParameterMissingException
      * @throws \ReflectionException
      */
