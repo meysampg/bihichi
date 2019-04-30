@@ -2,7 +2,7 @@
 
 namespace Components\Messages;
 
-use Contracts\ResponseInterface;
+use Components\Messages\Contracts\ResponseInterface;
 
 class Response extends Message implements ResponseInterface
 {

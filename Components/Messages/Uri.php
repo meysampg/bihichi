@@ -2,7 +2,7 @@
 
 namespace Components\Messages;
 
-use Contracts\UriInterface;
+use Components\Messages\Contracts\UriInterface;
 
 class Uri implements UriInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Components\Messages;
 
-use Contracts\UploadedFileInterface;
+use Components\Messages\Contracts\UploadedFileInterface;
 
 class UploadedFile implements UploadedFileInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Components\Messages;
 
-use Contracts\ServerRequestInterface;
+use Components\Messages\Contracts\ServerRequestInterface;
 
 class ServerRequest extends Request implements ServerRequestInterface
 {

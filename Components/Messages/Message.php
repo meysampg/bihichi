@@ -3,8 +3,8 @@
 namespace Components\Messages;
 
 use Components\Containers\Bag;
-use Contracts\MessageInterface;
-use Contracts\StreamInterface;
+use Components\Messages\Contracts\MessageInterface;
+use Components\Messages\Contracts\StreamInterface;
 
 /**
  * Class Message implements packets from client to the server or vice versa

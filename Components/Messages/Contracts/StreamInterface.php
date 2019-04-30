@@ -1,6 +1,6 @@
 <?php
 
-namespace Contracts;
+namespace Components\Messages\Contracts;
 
 /**
  * @see https://www.php-fig.org/psr/psr-7/

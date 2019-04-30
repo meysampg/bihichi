@@ -2,7 +2,7 @@
 
 namespace Components\Messages;
 
-use Contracts\StreamInterface;
+use Components\Messages\Contracts\StreamInterface;
 
 class Stream implements StreamInterface
 {

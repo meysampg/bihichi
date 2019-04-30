@@ -2,8 +2,8 @@
 
 namespace Components\Messages;
 
-use Contracts\RequestInterface;
-use Contracts\UriInterface;
+use Components\Messages\Contracts\RequestInterface;
+use Components\Messages\Contracts\UriInterface;
 
 class Request extends Message implements RequestInterface
 {
