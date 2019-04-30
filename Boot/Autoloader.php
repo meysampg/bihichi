@@ -19,8 +19,6 @@ spl_autoload_register(
 
          if (file_exists($class)) {
              require_once $class;
-         } else {
-             throw new ClassNotFoundException($className);
          }
      }
 );
