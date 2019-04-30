@@ -15,6 +15,8 @@ Everything can be implemented! :penguin: I'm highly intersted to learn more and 
  - [ ] Implement a ORM (ActiveRecord pattern prefred)
  - [ ] Implement a template engine
  - [ ] Implement messaging layer
+ - [x] Implement PDO layer
+ - [ ] Implement a SQL grammar parser
 
 ## Contribution Guide
 There is no guide, feel free to start learning and teach other :metal:. Just it can be a good idea if comments be more that codes :nail_care:.
